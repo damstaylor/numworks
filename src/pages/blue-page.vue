@@ -3,10 +3,14 @@
     <h2>Lets' play a game!</h2>
     <div>Click on the button in the allotedd time. Each time you click on the button less than 1 second before the alloted time, you get 100 extra points.</div>
     <div>Score: {{ getScore }}</div>
-    <button v-if="!isStarted" @click="start">Start</button>
-    <button v-else @click="stop">Stop</button>
+    <div>
+      <button v-if="!isStarted" @click="start">Start</button>
+      <button v-else @click="stop">Stop</button>
+    </div>
     <div v-if="message">{{ message }}</div>
-    <button @click="reset">Reset</button>
+    <div>
+      <button @click="reset">Reset</button>
+    </div>
   </div>
 </template>
 
