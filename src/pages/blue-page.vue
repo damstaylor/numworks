@@ -6,6 +6,7 @@
     <button v-if="!isStarted" @click="start">Start</button>
     <button v-else @click="stop">Stop</button>
     <div v-if="message">{{ message }}</div>
+    <button @click="reset">Reset</button>
   </div>
 </template>
 
@@ -52,6 +53,9 @@ export default {
     },
     stop() {
       this.isStopped = true;
+    },
+    reset() {
+      store.reset();
     },
   },
 };

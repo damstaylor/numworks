@@ -11,5 +11,8 @@ export const useScoreStore = defineStore('score', {
     incrementScore() {
       this.score += 100;
     },
+    reset() {
+      this.score = 0;
+    },
   },
 })
