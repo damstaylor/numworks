@@ -3,8 +3,8 @@
     <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/red">Red</router-link> |
-      <router-link to="/red">Green</router-link> |
-      <router-link to="/red">Blue</router-link>
+      <router-link to="/green">Green</router-link> |
+      <router-link to="/blue">Blue</router-link>
     </nav>
     <div v-if="$route.name !== 'home-page'">
       <h1 :class="$route.name">{{ headerText }}</h1>
