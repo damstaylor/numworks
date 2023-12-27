@@ -18,7 +18,10 @@ export default {
   name: 'color-header',
   computed: {
     headerText() {
-      return 'This is ' + this.$route.name;
+      if (!this.$route.name) {
+        return '';
+      }
+      return 'This is ' + this.$route.name.replace('-page', '');
     },
   },
   methods: {
