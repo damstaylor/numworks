@@ -7,9 +7,6 @@
 export default {
   name: 'blue-page',
   methods: {
-    nextColor() {
-      this.$router.push({ name: 'red-page' });
-    },
   },
 };
 </script>
