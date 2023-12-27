@@ -1,17 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+  <router-view v-slot="{Component}">
+    <color-header />
+    <component :is="Component"></component>
+  </router-view>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ColorHeader from './components/color-header.vue'
 
 export default {
-  name: 'App',
+  name: "App",
+  methods: {
+  },
   components: {
-    HelloWorld
-  }
-}
+    ColorHeader,
+  },
+};
 </script>
 
 <style>
@@ -21,6 +27,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height: 100vh;
+}
+
+#app > * {
+  height: 100%;
 }
 </style>
