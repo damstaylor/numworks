@@ -1,5 +1,7 @@
 import { createApp } from "vue";
 import { createRouter, createWebHashHistory } from "vue-router";
+import { createPinia } from 'pinia';
+
 import App from "./App.vue";
 const HomePage = () => import('./pages/home-page.vue');
 const RedPage = () => import('./pages/red-page.vue');
@@ -18,6 +20,9 @@ const router = createRouter({
   routes,
 });
 
+const pinia = createPinia();
+
 const app = createApp(App);
 app.use(router);
+app.use(pinia);
 app.mount("#app");
