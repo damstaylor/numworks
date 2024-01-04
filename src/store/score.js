@@ -8,8 +8,8 @@ export const useScoreStore = defineStore('score', {
     getScore: (state) => state.score,
   },
   actions: {
-    incrementScore() {
-      this.score += 100;
+    incrementScore(add) {
+      this.score += add;
     },
     reset() {
       this.score = 0;

@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     incrementScore() {
-      store.incrementScore();
+      store.incrementScore(100);
     },
     start() {
       this.isStarted = true;
