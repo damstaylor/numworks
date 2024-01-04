@@ -1,24 +1,23 @@
 <template>
   <div class="red-page">
-    <h2>Add days</h2>
-    <div>This is the weekdays list, you can add days to it:</div>
-    <ul>
-      <li v-for="(item, idx) in getWeekdays" :key="idx">
-        {{ item }}
-      </li>
-    </ul>
-    <input :value="fieldValue" @input="onInput" />
+    <day-list title="Add days"
+              description="This is the weekdays list, you can add days to it:"
+              :items="getWeekdays"
+    />
+    <input :value="fieldValue" @input="onInput" @keyup.enter="onEnter" />
     <button @click="onEnter">Enter</button>
   </div>
 </template>
 
 <script>
+import dayList from '@/components/day-list.vue';
 import { useWeekdaysStore } from '../store/weekdays';
 
 const store = useWeekdaysStore();
 
 export default {
   name: 'red-page',
+  components: { dayList },
   data() {
     return {
       fieldValue: '',

@@ -1,24 +1,23 @@
 <template>
   <div class="green-page">
-    <h2>Remove days</h2>
-    <div>This is the weekday list, you can remove days from it:</div>
-    <ul>
-      <li v-for="(item, idx) in getWeekdays" :key="idx">
-        <span>{{ item }}</span>
-        <button @click="remove(idx)">X</button>
-      </li>
-    </ul>
+    <day-list title="Remove days"
+              description="This is the weekday list, you can remove days from it:"
+              :items="getWeekdays"
+              :action="{ text: 'X', handleClick: (idx) => remove(idx) }"
+      />
   </div>
 </template>
 
 <script>
+import dayList from '@/components/day-list.vue';
 import { useWeekdaysStore } from '../store/weekdays.js';
 
 const store = useWeekdaysStore();
 
 export default {
   name: 'green-page',
-  created() {
+  components: {
+    dayList,
   },
   computed: {
     getWeekdays() {
