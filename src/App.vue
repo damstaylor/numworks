@@ -12,8 +12,6 @@ import ColorHeader from './components/color-header.vue'
 
 export default {
   name: "App",
-  methods: {
-  },
   components: {
     ColorHeader,
   },

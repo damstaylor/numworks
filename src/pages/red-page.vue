@@ -2,7 +2,7 @@
   <div class="red-page">
     <day-list title="Add days"
               description="This is the weekdays list, you can add days to it:"
-              :items="getWeekdays"
+              :items="weekdays"
     />
     <input :value="fieldValue" @input="onInput" @keyup.enter="onEnter" />
     <button @click="onEnter">Enter</button>
@@ -10,32 +10,33 @@
 </template>
 
 <script>
+import { computed, ref } from 'vue';
+import { storeHelpers } from '@/store/store-helpers';
 import dayList from '@/components/day-list.vue';
-import { useWeekdaysStore } from '../store/weekdays';
-
-const store = useWeekdaysStore();
 
 export default {
   name: 'red-page',
-  components: { dayList },
-  data() {
+  setup() {
+    const fieldValue = ref('');
+    const onInput = (event) => {
+      fieldValue.value = event.target.value;
+    };
+    const onEnter = () => {
+      add(fieldValue.value);
+      fieldValue.value = '';
+    };
+    const add = (newItem) => storeHelpers.add(newItem);
+    const weekdays = computed(() => storeHelpers.getWeekdays.value);
     return {
-      fieldValue: '',
+      add,
+      fieldValue,
+      onEnter,
+      onInput,
+      weekdays,
     };
   },
-  computed: {
-    getWeekdays() {
-      return store.getWeekdays;
-    },
-  },
-  methods: {
-    onInput(event) {
-      this.fieldValue = event.target.value;
-    },
-    onEnter() {
-      store.add(this.fieldValue);
-      this.fieldValue = '';
-    },
+  components: {
+    dayList
   },
 };
 </script>
